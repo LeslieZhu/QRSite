@@ -3,13 +3,13 @@
 ## 获取代码
 
 ```
-$ git clone git@github.com:ZheJiuShiMing/QRCode.git
+$ git clone git@github.com:ZheJiuShiMing/QRSite.git
 ```
 
 ## 建立本地python开发环境
 
 ```
-$ cd QRCode
+$ cd QRSite
 $ virutalenv qrenv
 $ source  qrenv/bin/activate
 ```

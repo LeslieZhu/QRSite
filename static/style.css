@@ -1,0 +1,18 @@
+body {
+    margin: 1em 10%
+}
+
+li {
+    list-style: none
+}
+
+hr {
+    color: #3333cc;
+    width=300;
+    text-align=left
+}
+
+
+a {
+    color: #000000
+}

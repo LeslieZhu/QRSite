@@ -1,2 +1,8 @@
 CherryPy==3.8.0
+Django==1.8.3
+Pillow==2.9.0
+image==1.4.0
+qrcode==5.1
+six==1.9.0
 wsgiref==0.1.2
+zbar==0.10

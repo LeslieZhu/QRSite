@@ -7,40 +7,40 @@
 
   <body>
 
-    <form name="qrsite" method="post" action="/run">
+    <form name="qrsite" enctype="multipart/form-data" method="post" action="/run">
       <center>
         <h3>生成/解析二维码图片: </h3>
+        <br />
 
         <ul>
           <li>
             <form name="method">
-              <input type="radio" name="encode" value="encode" onclick="document.getElementById('qrtext').style.visibility='visible';decode.checked=false;" checked /> 生成二维码图片
+              <input type="radio" id="encode" name="encode" value="encode" onclick="funcencode(this);" checked/> 生成二维码图片
               
-              <input type="radio" name="decode" value="decode" onclick="document.getElementById('qrtext').style.visibility='hidden';encode.checked=false;"  /> 解析二维码图片
+              <input type="radio" id="decode" name="decode" value="decode" onclick="funcdecode(this);"  /> 解析二维码图片
           </li>
         </ul>
+
+        <input id="uploadFile" type="file" name="uploadFile"/>
+
+        <br />
+        <br />
         
         <textarea id="qrtext" name="qrtext" style="width: 640px; height: 250px"></textarea>
         
         
         <br />
 
-        <input name="run" type="submit" value="运行" style="width: 85px"/>
+        <input name="run" type="submit" value="运行" style="width: 85px; color:blue;background: green"/>
 
       </center>
       </form>
       
-      <form method="post" enctype="multipart/form-data" action="/uploadFile">
-        <center>
-        <p>上传二维码图片</p>
-        <input type="file" name="uploadFile"/>
-        <input type="submit" value="上传" style="width: 85px"/>
-        </center>
-      </form>
 
-
-
-  <script src="static/qrsite.js"></script>
+      <script src="static/qrsite.js"></script>
+      <script language="javascript">
+        show();
+      </script>
 
   </body>
 </html>

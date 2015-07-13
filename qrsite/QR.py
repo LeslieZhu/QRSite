@@ -29,9 +29,9 @@ class QRSite(object):
                 
                 all_data += data
                 
-                saved_file=open('static/.qrcode.png', 'wb')
-                saved_file.write(all_data)
-                saved_file.close()
+            saved_file=open('static/qrcode.png', 'wb')
+            saved_file.write(all_data)
+            saved_file.close()
         else:
             return "请上传文件!"
 
@@ -39,7 +39,7 @@ class QRSite(object):
     def upload(self,uploadFile):
         if 'file' in dir(uploadFile):
             self.uploadFile(uploadFile)
-            return self.decode("static/.qrcode.png")
+            return self.decode("static/qrcode.png")
         else:
             return "解析失败!"
 
@@ -62,18 +62,19 @@ class QRSite(object):
         encode = parameters.get("encode",None)
         decode = parameters.get("decode",None)
         qrtext = parameters.get("qrtext","")
-        uploadFile = parameters.get("uploadFile",None)
+        uploadFile = parameters.get("uploadFile","")
         
         if encode and qrtext.strip() != "":
             return "<center><p><img src=\"%s\"/></p></center>" % self.encode(qrtext)
-        elif decode:
-            return '<center><textarea id="qrtext" name="qrtext" style="width: 640px; height: 250px">%s</textarea></center>' % self.decode("static/.qrcode.png")
+        elif decode and 'file' in dir(uploadFile) and uploadFile.file != None:
+            self.uploadFile(uploadFile)
+            return '<center><textarea id="qrtext" name="qrtext" style="width: 640px; height: 250px">%s</textarea></center>' % self.decode("static/qrcode.png")
         else:
             return "<p>请输入内容!</p>"
 
     @cherrypy.expose        
     def encode(self,qrtext):
-        filename = "static/.qrcode.png"
+        filename = "static/qrcode.png"
             
         qr = qrcode.QRCode(
             version=1,

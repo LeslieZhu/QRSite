@@ -6,10 +6,13 @@
 # 功能
 
 - 提供内容，生成包含内容的二维码图片
+
   ```
   $ wget localhost:8080/download?qrtext="hello,world." -O qrcode.png
   ```
+  
 - 上传二维码图片，解析包含的内容
+
   ```
   $ curl  -F "uploadFile=@/Desktop/test.png"  localhost:8080/upload > qrtext.txt
   ```

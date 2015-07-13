@@ -108,14 +108,14 @@ class QRSite(object):
         
         data = ''
         for symbol in image:
-            #for line in symbol.data.split('\n'):
-            #    data += "<p>%s</p>" % line
             data += symbol.data
             
         del(image)
 
-       
-        return data
+        if data:
+            return data
+        else:
+            return "解析失败!\n确定上传的是二维码图片吗?!"
         
 
 if __name__ == "__main__":

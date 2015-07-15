@@ -10,7 +10,7 @@ $ git clone git@github.com:ZheJiuShiMing/QRSite.git
 
 ```
 $ cd QRSite
-$ virutalenv qrenv
+$ virtualenv qrenv
 $ source  qrenv/bin/activate
 ```
 

@@ -65,12 +65,12 @@ class QRSite(object):
         uploadFile = parameters.get("uploadFile","")
         
         if encode and qrtext.strip() != "":
-            return "<center><p><img src=\"%s\"/></p></center>" % self.encode(qrtext)
+            return u"<center><br /><p>生成的二维码图片:</p><br /><p><img src=\"%s\"/></p></center>" % self.encode(qrtext)
         elif decode and 'file' in dir(uploadFile) and uploadFile.file != None:
             self.uploadFile(uploadFile)
-            return '<center><textarea id="qrtext" name="qrtext" style="width: 640px; height: 250px">%s</textarea></center>' % self.decode("static/qrcode.png")
+            return u'<center><br /><p>二维码解析结果:</p><br /><textarea id="qrtext" name="qrtext" style="width: 640px; height: 250px">%s</textarea></center>' % self.decode("static/qrcode.png")
         else:
-            return "<p>请输入内容!</p>"
+            return u"<p>请输入内容!</p>"
 
     @cherrypy.expose        
     def encode(self,qrtext):
@@ -106,16 +106,16 @@ class QRSite(object):
         image = zbar.Image(width, height, 'Y800', raw)
         scanner.scan(image)
         
-        data = ''
+        data = u''
         for symbol in image:
-            data += symbol.data
+            data += symbol.data.decode('utf-8')
             
         del(image)
 
         if data:
-            return data
+            return unicode(data)
         else:
-            return "解析失败!\n确定上传的是二维码图片吗?!"
+            return u"解析失败!\n确定上传的是二维码图片吗?!"
         
 
 if __name__ == "__main__":
